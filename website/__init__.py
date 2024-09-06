@@ -10,4 +10,11 @@ def create_app():
     # Configure Flask variables
     app.config['SECRET_KEY'] = "t$cn:v}oWJE)-jC"
     
+    # Import and Register Blueprints to Flask application
+    from .views import views
+    from .auth import auth
+
+    app.register_blueprint(views, url_prefix="/")
+    app.register_blueprint(auth, url_prefix="/")
+    
     return app
