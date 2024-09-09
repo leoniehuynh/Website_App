@@ -5,7 +5,8 @@ from flask import Blueprint, render_template
 # Create and define Blueprint for views variable
 views = Blueprint("views", __name__)
 
-# Register core blog routes to views Blueprint that render templates
+# Register routes to views Blueprint
+# Define blog functions. Each will return the function, render_template, to render their respective HTML files from website/templates
 @views.route("/")
 @views.route("/home")
 def home():
