@@ -1,4 +1,4 @@
-# Import function from website folder
+# Import create_app function from website folder
 from website import create_app
 
 # Run application
