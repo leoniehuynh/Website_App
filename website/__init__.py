@@ -29,6 +29,16 @@ def create_app():
     # Call create_database
     create_database(app)
     
+    # Set up login manager and pass app
+    login_manager=LoginManager
+    # Redirect logged out users accessing restricted pages to login page
+    login_manager.login_view = "auth.login"
+    login.manager.init_app(app)
+    
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+    
     return app
 
 # Function to check existence of, and create database 
