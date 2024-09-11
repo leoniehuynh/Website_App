@@ -45,6 +45,12 @@ text
                     <p>
                         {{post.text}}
                     </p>
+                    <br/>
+                    <!-- Comment Form-->   
+                    <form class="input-group mb-3" method="POST" action="/create-comment">
+                        <input type="text" id="text" name="text" class="form-control" placeholder="Create a comment!"/>
+                        <button type="submit" class="btn btn-primary">Enter</button>
+                    </form>
                     <!-- Display Creation Date-->
                     <footer class="text-muted">
                         {{ post.date_created}}

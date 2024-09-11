@@ -12,8 +12,9 @@ views = Blueprint("views", __name__)
 
 # =============== Home Route and Function ===============
 ''' 
-Home function will return the function, render_template, to render their respective HTML files from website/templates
-has access to the variable posts and can show them
+The Home function has access to all posts, this is so they can be displayed within the posts page.
+Additionally, it will return the function, render_template, to redirect the user to the home.html
+page.
 '''
 
 @views.route("/")
@@ -24,7 +25,16 @@ def home():
 
 # ============= Create Post Route and Function ============
 '''
-Allow methods
+The Create Post function has been allowed the methods GET and POST so that it can pull from and
+update the database of the flask application. It will create a post from user data and store
+it into the database to be displayed. It is required that a user is logged into a user account 
+to access the create post page.
+
+It will request a text input from the user account through a form in order to create a post and 
+commit it into the database so that it may be displayed in the home/posts page and a success
+flash message appears and the user is redirected into the home / posts page. Otherwise, if the 
+form has been submitted with no text, an error flash message appears and the create post template
+page is rendered for the user to retry.
 '''
 @views.route("/create-post", methods=['GET', 'POST'])
 @login_required
@@ -45,8 +55,13 @@ def create_post():
 
 # ============ User Posts Route and Function =============
 '''
-Get all posts from chosen user
-check if user exists and show all posts from user
+The User Posts function will search through the posts of the selected user through the
+user account's username. It will check if the user account exists and if it does, then
+the function will collect and display all posts made by the selected user account.
+
+Otherwise, if the user account does not exist, then the function will flash an error
+message and redirect the user back to the home page. It is required that a user is logged into a 
+user account to access the create post page.
 '''
 
 @views.route("/posts/<username>")
@@ -62,11 +77,16 @@ def posts(username):
 
 # ============ Delete Post Route and Function =============
 '''
-description
-check the id of post
-check if correct person
-and if so check if there is a post with id
-then if permissions ok, delete post from database and refresh
+The Delete Post function will identify and delete an existing post from the database.
+It will check the unique id given to the user post and check is the post exists. Then,
+it will check if the user has the correct permissions to delete the post through the
+post author id and the user account id of the user. If these prerequisites are met,
+the post will be deleted from display and the database. It is required that a user 
+is logged into a user account to access the create post page.
+
+Otherwise, if the post does not exist or the user does not have sufficient permissions,
+then the function will return an error flash message and return a redirect for the home
+page.
 '''
 
 @views.route("/delete-post/<id>")
