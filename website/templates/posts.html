@@ -1,5 +1,14 @@
-{% extends "base.html" %}
-{% block title %}Posts{% endblock %}
-{% block content %}
-    <h1>Text</h1>
+{% extends "posts_div.html" %}
+{% block title %}{{username}}'s Posts{% endblock %}
+{% block header %}
+        {{username}}'s Posts
 {% endblock %}
+{% block footer %}
+<div align="center">
+    <a class="btn btn-primary btn-lg" href="/home">Create a Post</a>
+</div>
+{% endblock %}
+
+<!--
+The Posts page is for
+-->

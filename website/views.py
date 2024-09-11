@@ -22,7 +22,7 @@ def home():
     posts = Post.query.all()
     return render_template("home.html", user=current_user, posts=posts)
 
-# =========== Create Post Route and Function ==============
+# ============= Create Post Route and Function ============
 '''
 Allow methods
 '''
@@ -43,7 +43,24 @@ def create_post():
 
     return render_template('create_post.html', user=current_user)
 
-# ========= Create Delete Post Route and Function ==========
+# ============ User Posts Route and Function =============
+'''
+Get all posts from chosen user
+check if user exists and show all posts from user
+'''
+
+@views.route("/posts/<username>")
+@login_required
+def posts(username):
+   user = User.query.filter_by(username=username).first()
+   if not user:
+       flash('No user with that username exists.', category='error;')
+       return redirect(url_for('views.home'))
+   
+   posts = Post.query.filter_by(author=user.id).all()
+   return render_template("posts.html", user=current_user, posts=posts, username=username)
+
+# ============ Delete Post Route and Function =============
 '''
 description
 check the id of post
