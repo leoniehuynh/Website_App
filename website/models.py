@@ -6,11 +6,15 @@ from sqlalchemy.sql import func
 
 '''
  The User Database Model:
+ Description
+ Details
+ Relationships
+ 
  - Primary key = id
  - Users are automatically given a unique id on successful signup
  
  Email has a maximum character length of 320, it must be unique to prevent duplicate emails
- 
+
 '''
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)

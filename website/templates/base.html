@@ -21,11 +21,33 @@
                     <div class="navbar-nav">
                         <a class="nav-item nav-link" href="/home">Home</a>
                         <a class="nav-item nav-link" href="/login">Login</a>
-                        <a class="nav-item nav-link" href="/sign-up">Sign Up</a>
+                        <a class="nav-item nav-link" href="/sign-up">Register</a>
+                        <a class="nav-item nav-link" href="/logout">Logout</a>
                     </div>
                 </div>
             </div>
         </nav>
+
+        <!-- Show Message/Alert Flashing -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}                    
+                    <!-- Show error message -->
+                    {% if category == "error" %} 
+                    <div  class="alert alert-danger alert-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    <!-- Show success message -->
+                    {% else %}
+                    <div  class="alert alert-success alert-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endif %}
+                {% endfor%}
+            {% endif %}
+        {% endwith %}
 
         <!-- For page content -->
         <div class="container">

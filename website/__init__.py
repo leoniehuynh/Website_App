@@ -13,7 +13,7 @@ def create_app():
     app = Flask(__name__)
     # Configure Flask variables and Initialise database within Flask app
     app.config['SECRET_KEY'] = "t$cn:v}oWJE)-jC"
-    app.config['SQL_ALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
     
     # Import and Register Blueprints to Flask application
@@ -30,10 +30,10 @@ def create_app():
     create_database(app)
     
     # Set up login manager and pass app
-    login_manager=LoginManager
-    # Redirect logged out users accessing restricted pages to login page
-    login_manager.login_view = "auth.login"
-    login.manager.init_app(app)
+    login_manager=LoginManager()
+
+    login_manager.login_view = "auth.login" # redirect logged out users accessing restricted pages to login page
+    login_manager.init_app(app)
     
     @login_manager.user_loader
     def load_user(id):
@@ -44,6 +44,8 @@ def create_app():
 # Function to check existence of, and create database 
 def create_database(app):
     if not path.exists("website/" + DB_NAME):
-        db.create_all(app=app)
+        with app.app_context():
+            db.create_all()
+
         
         
