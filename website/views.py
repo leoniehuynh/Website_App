@@ -42,3 +42,26 @@ def create_post():
             return redirect(url_for('views.home'))
 
     return render_template('create_post.html', user=current_user)
+
+# ========= Create Delete Post Route and Function ==========
+'''
+description
+check the id of post
+check if correct person
+and if so check if there is a post with id
+then if permissions ok, delete post from database and refresh
+'''
+
+@views.route("/delete-post/<id>")
+@login_required
+def delete_post(id):
+   post = Post.query.filter_by(id=id).first()
+   if not post:
+       flash("Post does not exist.", category='error')
+   elif post.author != current_user.id:
+       flash('You do not have permission to delete this post.', category='error')
+   else:
+       db.session.delete(post)
+       db.session.commit()
+       flash('Post deleted.', category='success')
+   return redirect(url_for('views.home'))
