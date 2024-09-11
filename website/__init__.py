@@ -23,8 +23,8 @@ def create_app():
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
     
-    # Import User model
-    from .models import User
+    # Import models
+    from .models import User, Post
     
     # Call create_database
     create_database(app)

@@ -17,7 +17,6 @@ auth = Blueprint("auth", __name__)
 '''
 Purpose of route and stuff
 '''
-# ========================================================
 
 @auth.route("/login", methods=['GET', 'POST'])
 def login():
@@ -37,13 +36,12 @@ def login():
     else: # if user does not exist
         flash('No user account with this email exists.', category='error')
 
-    return render_template("login.html")
+    return render_template("login.html", user=current_user)
         
 # =============== Signup Route and Function ===============
 '''
 Define sign_up function, receives data from signup form and returns render_template for signup.html
 '''
-# =========================================================
 
 @auth.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
@@ -79,13 +77,13 @@ def sign_up():
             return redirect(url_for('views.home'))
     
     # Return signup.html template if prerequisites are not met
-    return render_template("signup.html")
+    return render_template("signup.html", user=current_user)
 
 # =============== Logout Route and Function ===============
 ''' 
 Define logout function, returns a redirect to url_for the home function in views.py
 '''
-# =========================================================
+
 @auth.route("/logout")
 @login_required
 def logout():

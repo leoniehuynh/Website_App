@@ -1,5 +1,29 @@
 {% extends "base.html" %}
 {% block title %}Register{% endblock %}
+
+<!-- 
+The purpose of the Sign Up / Register page is to show a
+form that users will utilise to create a user account 
+that is authenticated to access other parts of the
+website. The user account will be created and put
+into the database with the password hashed.
+Additionally, The user will be logged into the 
+user account and redirected to the home page. 
+
+In order to register successfully, the user must input
+a valid email, unique username within 6-30 characters,
+and their password twice (above 8 characters). This 
+can be found in the signup route in auth.py
+
+Otherwise, the user account will not be created and
+the page is refreshed.
+
+The sign up form can only be seen on the navigation bar if
+the user is not authenticated / logged in. Otherwise,
+it will not be seen on the navigation bar of a
+authenticated / logged in user account.
+-->
+
 {% block content %}
     <!-- Heading -->
     <h3 align="center"> 

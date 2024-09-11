@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
+
+<!-- 
+The purpose of the Login page is to show a form that users 
+will utilise to post their username and passwords into in 
+order to log into their user accounts. Users will be 
+logged into their user accounts and are redirected
+to the home page.
+
+In order to log in successfully, the user must input
+a valid email associated with a user account and 
+the correct password for the user account. This can
+be found in the login route in auth.py
+
+The login form can only be seen on the navigation bar if
+the user is not authenticated / logged in. Otherwise,
+it will not be seen on the navigation bar of a
+authenticated / logged in user account.
+-->
+
 {% block content %}
     <!-- Heading -->
     <h3 align="center"> 
