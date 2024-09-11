@@ -1,5 +1,36 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}Login{% endblock %}
 {% block content %}
-    <h1>Text</h1>
+    <!-- Heading -->
+    <h3 align="center"> 
+        Login
+    </h3>
+     <!-- Login Form -->
+    <form method="POST">
+        <div class="form-group">
+            <!-- Input for email address -->
+            <label for="email">Email Address</label>
+            <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-control" 
+            placeholder="Enter Email"
+            />
+            <!-- Input for password -->
+            <label for="password">Password</label>
+            <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-control" 
+            placeholder="Enter Password"
+            />
+            <br/>
+            <!-- Form submission button -->
+            <div align="center">
+                <button class="btn btn-primary" type="submit">Login</button> 
+            </div>
+        </div>
+    </form>
 {% endblock %}

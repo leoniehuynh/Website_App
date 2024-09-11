@@ -1,5 +1,54 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}Register{% endblock %}
 {% block content %}
-    <h1>Text</h1>
+    <!-- Heading -->
+    <h3 align="center"> 
+        Register Account
+    </h3>
+    <!-- Sign Up Form -->
+    <form method="POST">
+        <div class="form-group">
+            <!-- Input for email address -->
+            <label for="email">Email Address</label>
+            <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-control" 
+            placeholder="Enter Email"
+            />
+            <!-- Input for username -->
+            <label for="email">Username</label>
+            <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            class="form-control" 
+            placeholder="Enter Username"
+            />
+            <!-- Input for password -->
+            <label for="password1">Password</label>
+            <input 
+            type="password" 
+            id="password1" 
+            name="password1" 
+            class="form-control" 
+            placeholder="Enter Password"
+            />
+            <!-- Input for password -->
+            <label for="password2">Password Confirmation</label>
+            <input 
+            type="password" 
+            id="password2" 
+            name="password2" 
+            class="form-control" 
+            placeholder="Enter Password Again"
+            />
+            <br/>
+            <!-- Form submission button -->
+            <div align="center">
+                <button class="btn btn-primary" type="submit">Register</button> 
+            </div>
+        </div>
+    </form>
 {% endblock %}
