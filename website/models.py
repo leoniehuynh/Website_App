@@ -26,8 +26,9 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     posts = db.relationship('Post', backref='user', passive_deletes=True)
+    comments = db.relationship('Post', backref='user', passive_deletes=True)
     
-# =============== Database Model ===============
+# =============== Post Model ===============
 '''
 description
 give post unique id
@@ -42,7 +43,21 @@ class Post(db.Model):
     text = db.Column(db.Text, nullable=False)
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     author = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
+    posts = db.relationship('Post', backref='post', passive_deletes=True)
     
-    
-    
-    
+# =============== Comment Model ===============
+'''
+description
+give comment unique id
+require text and date_created
+know author by referncing from user model id to know user
+if user is deleted, the users posts are also deleted. through cascading on delete
+nullable false means must have a value. one to many relationship where one user has many posts.
+'''
+
+class Comment(db.Model):
+   id = db.Column(db.Integer, primary_key=True)
+   text = db.Column(db.Text, nullable=False)
+   date_created = db.Column(db.DateTime(timezone=True), default=func.now())
+   author = db.Column(db.Integer, db.ForeignKey('user.id',ondelete="CASCADE"), nullable=False)
+   post_id = db.Column(db.Integer, db.ForeignKey('post.id',ondelete="CASCADE"), nullable=False)
