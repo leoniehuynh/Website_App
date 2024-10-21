@@ -1,6 +1,49 @@
-{% extends "posts_div.html" %}
+{% extends "base.html" %}
 {% block title %}Home{% endblock %}
 <!--
 The home page serves as the default landing page of
-the website. It will contain 
+the website. It will contain info of the site. 
 -->
+{% block content %}
+<body class="d-flex flex-column">
+    <main class="flex-shrink-0">
+        <!-- Header-->
+        <header class="py-5">
+            <div class="container px-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xxl-6">
+                        <div class="text-center my-5">
+                            <h1 class="fw-bolder mb-3">Talk! Visual Media</h1>
+                            <p class="lead fw-normal text-muted mb-4">Join a community of like-minded individuals around the topic of Visual Media!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- About section one-->
+        <section class="py-5 bg-light" id="scroll-target">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                    <div class="col-lg-6">
+                        <h2 class="fw-bolder">Who Are We?</h2>
+                        <p class="lead fw-normal text-muted mb-0">Talk! Visual Media is a social media-esque blog website intended for members to communicate and bond over the shared interest of Visual Media. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About section two-->
+        <section class="py-5">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                    <div class="col-lg-6">
+                        <h2 class="fw-bolder">Visual Media?</h2>
+                        <p class="lead fw-normal text-muted mb-0">What is Visual Media? Visual Media is an umbrella term for the use of visual elements convey ideas and information which include signs, typography, drawing, graphic design, illustration, industrial design, advertising, animation, and electronic resources.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}

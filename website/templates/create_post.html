@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Create Post{% endblock %}
 <!--
-The Create Post page is for
+The Create Post page is for users to input text in a form used to create user posts.
+Users are redirected to the posts page upon submission of the form.
+Posts are displayed on the posts page.
 -->
 {% block content %}
-    <!-- Heading -->
+    <!-- Post Creation Form -->
     <h1 align="center">
         Create a Post
     </h1>
-    <!--- -->
+    <!--- Input for post content -->
     <form method="POST">
         <textarea name="text" id="text" class="form-control"></textarea>
         <br/>
@@ -17,8 +19,8 @@ The Create Post page is for
         </div>
     </form>
     <br/>
+    <!--- Form submission button -->
     <div align="center">
-        <a class="btn btn-secondary btn-lg" href="/home">Back</a>
+        <a class="btn btn-secondary btn-lg" href="/blog">Back</a>
     </div>
-
 {% endblock %}
